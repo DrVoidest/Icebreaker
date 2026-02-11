@@ -1,8 +1,9 @@
 {
-  description = "Project Icebreaker flake";
+  description = "A simple flake for running custom packages";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,18 +13,18 @@
   outputs = {
     self,
     nixpkgs,
-    ...
+    quickshell,
   }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
   in {
-    devShells.x86_64-linux.default = pkgs.mkShell {
-      buildInputs = with pkgs; [
-        hello
-      ];
-      shellHook = ''
-        echo "Welcome to the Icebreaker Dev Shell"
-      '';
+    packages.${system} = {
+      #@TODO clean up to make the tooling more usable
+      default = pkgs.hello;
+      quickshell = quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+        withX11 = false;
+        withI3 = false;
+      };
     };
   };
 }
