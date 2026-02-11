@@ -1,19 +1,48 @@
-import Quickshell // for PanelWindow
-import QtQuick // for Text
+import Quickshell
+import Quickshell.Io
+import QtQuick
 
-PanelWindow {
-    anchors {
+Variants {
+  model: Quickshell.screens;
+
+  delegate: Component {
+    PanelWindow {
+      // the screen from the screens list will be injected into this
+      // property
+      required property var modelData
+
+      // we can then set the window's screen to the injected property
+      screen: modelData
+
+      anchors {
         top: true
         left: true
         right: true
-    }
+      }
 
-    implicitHeight: 30
+      implicitHeight: 30
 
-    Text {
-        // center the bar in its parent component (the window)
+      Text {
+        id: clock
         anchors.centerIn: parent
 
-        text: "hello world"
+        Process {
+          id: dateProc
+          command: ["date", "+%l:%M %p"]
+          running: true
+
+          stdout: StdioCollector {
+            onStreamFinished: clock.text = this.text
+          }
+        }
+
+        Timer {
+          interval: 1000
+          running: true
+          repeat: true
+          onTriggered: dateProc.running = true
+        }
+      }
     }
+  }
 }
