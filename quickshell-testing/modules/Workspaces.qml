@@ -10,7 +10,7 @@ Singleton {
     property int current_workspace
     property string in_use_workspaces
 
-    // Total Workspaces
+    //Total Workspaces
     Process {
         id: total_workspaces_process
         command: ["sh", "-c", "mmsg -g -t | awk '$5 >= 1 { print $3 }' | wc -w"]

@@ -11,7 +11,7 @@ Scope {
         PanelWindow {
             required property var modelData
             screen: modelData
-
+            color: Theme.base00
             anchors {
                 top: true
                 left: true
@@ -37,9 +37,8 @@ Scope {
                         property string current_workspace_index: workspace_row.in_use_workspaces_vector[index] || ""
 
                         property bool isCurrent: current_workspace_index == workspace_row.current_workspace_int
-                        color: isCurrent ? "blue" : "green"
+                        color: isCurrent ? Theme.base0A : Theme.base0B
                         // Animations :)
-
                         // Spring animation for the width change
                         Behavior on width {
                             SpringAnimation {
@@ -56,6 +55,9 @@ Scope {
                         }
                         Text {
                             id: workspace_text
+                            font.family: Theme.font_family
+                            font.pointSize: Theme.font_size
+                            color: Theme.base00
                             text: parent.isCurrent ? "| " + parent.current_workspace_index + " |" : parent.current_workspace_index
                             anchors.left: parent.left
                             anchors.verticalCenter: parent.verticalCenter
@@ -64,18 +66,24 @@ Scope {
                     }
                 }
             }
+            // Center aligned
             Text {
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.leftMargin: Config.margins
+                text: "some very fancy looking text"
+                font.family: Theme.font_family
+                font.pointSize: Theme.font_size
+                color: Theme.base05
+                font.italic: true
+                anchors.horizontalCenter: parent.horizontalCenter
             }
 
             // Right Aligned
             Text {
                 text: Clock.time
+                font.family: Theme.font_family
+                font.pointSize: Theme.font_size
+                color: Theme.base05
                 anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.rightMargin: Config.margins
+                anchors.rightMargin: Theme.margins
             }
         }
     }
