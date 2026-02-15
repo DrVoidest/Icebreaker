@@ -1,8 +1,7 @@
 // shell.qml
-
-import "modules/"
+import "../Config.qml"
 import Quickshell
 
-ShellRoot {
+Scope {
     Bar {}
 }
