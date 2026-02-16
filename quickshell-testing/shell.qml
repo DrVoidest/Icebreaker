@@ -1,6 +1,5 @@
 // shell.qml
-
-import "modules/"
+import "modules"
 import Quickshell
 
 ShellRoot {
