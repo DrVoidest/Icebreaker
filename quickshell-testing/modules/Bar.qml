@@ -116,8 +116,8 @@ Scope {
 
                     Behavior on width {
                         SpringAnimation {
-                            spring: 13.0
-                            damping: 1.0
+                            spring: 13.0 // Determines the acceleration (stiffness)
+                            damping: 0.3  // Determines how quickly it settles (lower = more bounces)
                         }
                     }
                     Behavior on color {
@@ -131,7 +131,7 @@ Scope {
                         font.family: Theme.font_family
                         font.pointSize: Theme.font_size
                         color: Theme.base00
-                        text: parent.isCurrent ? "| " + parent.current_workspace_index + " |" : parent.current_workspace_index
+                        text: parent.isCurrent ? "|" + parent.current_workspace_index + "|" : parent.current_workspace_index
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.leftMargin: Config.margins
