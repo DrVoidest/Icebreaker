@@ -1,7 +1,6 @@
 pragma Singleton
 import Quickshell
 import QtQuick
-import Quickshell.Io
 
 // Will later read from json to configure. I tried this and it went very badly I will come back to it later
 

@@ -1,4 +1,4 @@
-// shell.qml
+//@ pragma UseQApplication
 import "modules"
 import Quickshell
 
