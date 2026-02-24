@@ -36,7 +36,7 @@ RowLayout {
 
     Item {
         id: sink_status_wrapper
-        width: sink_status.width
+        implicitWidth: sink_status.width
         height: sink_status.height
         RegularText {
             id: sink_status
@@ -56,7 +56,8 @@ RowLayout {
     }
     Item {
         id: sink_volume_wrapper
-        width: sink_volume.width
+        implicitWidth: sink_volume.width
+
         height: sink_volume.height
         RegularText {
             id: sink_volume
@@ -76,7 +77,7 @@ RowLayout {
     }
     Item {
         id: source_wrapper
-        width: source.width
+        implicitWidth: source.width
         height: source.height
         RegularText {
             id: source
