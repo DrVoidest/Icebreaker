@@ -106,6 +106,10 @@ ListView {
                 duration: 1000
             }
         }
+        Process {
+            id: workspace_switcher
+            running: false
+        }
 
         Text {
             id: workspace_text
@@ -118,6 +122,13 @@ ListView {
             color: Theme.base00
             text: parent.isCurrent ? "|" + parent.current_workspace_index + "|" : parent.current_workspace_index
             Layout.leftMargin: Config.margins
+        }
+        MouseArea {
+            id: workspace_mouse_area
+            anchors.fill: parent
+            onClicked: {
+                workspace_switcher.exec(["sh", "-c", `mmsg -t ${parent.current_workspace_index}`]);
+            }
         }
     }
     Item {
@@ -140,5 +151,9 @@ ListView {
             repeat: true
             onTriggered: self_triming_process.running = true
         }
+        // Process {
+        //     id: workspace_switcher
+        //     running: false
+        //}
     }
 }

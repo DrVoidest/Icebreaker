@@ -1,7 +1,6 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import Quickshell.Services.SystemTray
 
 Scope {
     id: root
@@ -33,9 +32,10 @@ Scope {
                     Layout.fillWidth: true
                 }
                 Tray {}
+                Audio {}
                 RegularText {
                     id: clock
-                    text: `${Audio.formated_audio}  ${Battery.formated_power} ${Clock.time}`
+                    text: `${Battery.formated_power} ${Clock.time}`
                 }
             }
         }

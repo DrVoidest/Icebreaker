@@ -1,8 +1,6 @@
 import QtQuick
-import QtQuick.Controls
 import Quickshell
 import Quickshell.Services.SystemTray
-import Quickshell.Widgets
 
 Item {
     id: root
@@ -56,10 +54,10 @@ Item {
                     sourceSize: Qt.size(root.iconSize, root.iconSize)
                     smooth: true
 
-                    // render as a texture (svg cases)
-                    layer.enabled: true
-                    layer.smooth: true
-                    layer.textureSize: Qt.size(root.iconSize * 2, root.iconSize * 2)
+                    // render as a texture (svg cases) seems to cause issues with rendering
+                    //layer.enabled: true
+                    //layer.smooth: true
+                    //layer.textureSize: Qt.size(root.iconSize * 2, root.iconSize * 2)
                 }
             }
         }
