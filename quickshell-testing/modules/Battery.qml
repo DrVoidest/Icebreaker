@@ -14,6 +14,9 @@ Singleton {
         }
     }
     function change_icon(percentage) {
+        if (percentage <= 0) { // Bit of a hack to hide the battery on desktop
+            return "";
+        }
         if (UPower.onBattery) {
             if (percentage >= 70) {
                 return `󰁹 ${percentage}%`;

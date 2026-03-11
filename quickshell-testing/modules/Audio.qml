@@ -10,7 +10,6 @@ RowLayout {
     PwObjectTracker {
         objects: [Pipewire.defaultAudioSink, Pipewire.defaultAudioSource]
     }
-
     function change_icon_sink(audio_sink) {
         if (audio_sink.muted) {
             return " ";
@@ -40,7 +39,7 @@ RowLayout {
         height: sink_status.height
         RegularText {
             id: sink_status
-            text: audio_row.change_icon_sink(Pipewire.defaultAudioSink.audio)
+            text: audio_row.change_icon_sink(Pipewire.defaultAudioSink?.audio ?? "null") // added null protection
         }
         MouseArea {
             id: sink_status_mouse_area
@@ -61,7 +60,7 @@ RowLayout {
         height: sink_volume.height
         RegularText {
             id: sink_volume
-            text: Math.floor(Pipewire.defaultAudioSink.audio.volume * 100) + "%"
+            text: Math.floor(Pipewire.defaultAudioSink?.audio.volume * 100 ?? 0) + "%" // added null protection
         }
         MouseArea {
             id: sink_volume_mouse_area
@@ -81,7 +80,8 @@ RowLayout {
         height: source.height
         RegularText {
             id: source
-            text: audio_row.change_icon_source(Pipewire.defaultAudioSource.audio)
+            text: audio_row.change_icon_source(Pipewire.defaultAudioSource?.audio ?? "null") // added null protection
+
         }
         MouseArea {
             id: source_mouse_area

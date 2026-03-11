@@ -35,7 +35,7 @@ Scope {
                 Audio {}
                 RegularText {
                     id: clock
-                    text: `${Battery.formated_power} ${Clock.time}`
+                    text: `${Battery.formated_power} ${Clock.time} `
                 }
             }
         }
