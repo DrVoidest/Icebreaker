@@ -3,5 +3,5 @@ import "modules"
 import Quickshell
 
 ShellRoot {
-    Bar {}
+    Base {}
 }

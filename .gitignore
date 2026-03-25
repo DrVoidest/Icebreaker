@@ -1,2 +1,4 @@
 result
 quickshell-testing/.qmlls.ini
+quickshell-security-app/.qmlls.ini
+quickshell-security-app/sshd_config
