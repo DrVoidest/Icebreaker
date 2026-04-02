@@ -15,7 +15,7 @@ Scope {
             readonly property var appW: modelData.width / 2
 
             readonly property var page_list: ["Home", "SSH"]
-
+            property string currentPage: "Home"
             screen: modelData
             color: Theme.base00
             implicitHeight: appH / 2
@@ -29,7 +29,6 @@ Scope {
                 model: ListModel {
                     id: page_model
                 }
-                //page_model.insert("home")
                 delegate: Rectangle {
                     id: page_button
                     implicitHeight: base.appH / 25
@@ -40,11 +39,9 @@ Scope {
             }
             RowLayout {
                 id: pages_list
-                //orientation: ListView.Horizontal
                 Layout.fillHeight: true
                 width: parent.implicitWidth
-                //height: base.appH
-                spacing: 2
+                spacing: Theme.margins / 2
                 Process {
                     id: page_switcher
                     running: false
@@ -55,7 +52,7 @@ Scope {
                     implicitHeight: base.appH / 25
                     implicitWidth: 50
                     radius: 15
-                    color: Theme.base0B
+                    color: base.currentPage === "Home" ? Theme.base0A : Theme.base0B
                     RegularText {
                         id: homeText
                         text: base.page_list[0]
@@ -71,6 +68,7 @@ Scope {
                         anchors.fill: homeText
                         onClicked: {
                             page_area.loadPage("HomePage.qml");
+                            base.currentPage = "Home";
                             console.log("User switched to Home page.");
                         }
                     }
@@ -80,7 +78,7 @@ Scope {
                     implicitHeight: base.appH / 25
                     implicitWidth: 50
                     radius: 15
-                    color: Theme.base0B
+                    color: base.currentPage === "SSH" ? Theme.base0A : Theme.base0B
                     RegularText {
                         text: base.page_list[1]
                         color: Theme.base00
@@ -95,6 +93,7 @@ Scope {
                         anchors.fill: parent
                         onClicked: {
                             page_area.loadPage("SShPage.qml");
+                            base.currentPage = "SSH";
                             console.log("User switched to ssh page.");
                         }
                     }
@@ -128,7 +127,7 @@ Scope {
             Rectangle {
                 id: page_area
                 color: Theme.base0A
-                y: quit.height + 0
+                y: quit.height + Theme.margins
                 implicitWidth: appW
                 implicitHeight: appH - (quit.height + 0)
                 // Hack to make Home page load by default

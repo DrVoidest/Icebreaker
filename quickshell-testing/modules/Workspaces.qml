@@ -80,7 +80,6 @@ ListView {
         }
     }
 
-    // What it will create (May be turned into a button later)
     delegate: Rectangle {
         id: workspace_rect
 
