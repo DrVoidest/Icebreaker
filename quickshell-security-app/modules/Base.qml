@@ -8,30 +8,31 @@ Scope {
     id: root
     Variants {
         model: Quickshell.screens
-        PanelWindow {
+        FloatingWindow {
             id: base
             required property var modelData
-            readonly property var appH: modelData.height / 2
-            readonly property var appW: modelData.width / 2
-            readonly property int appD25: base.appH / 25
+            readonly property var appH: height
+            readonly property var appW: width
+            readonly property int appHD25: base.appH / 25
             readonly property var page_list: ["Home", "SSh", "ClamAV", "Quit"]
             property string currentPage: page_list[0]
 
-            screen: modelData
+            //screen: modelData
             color: Theme.base00
-            implicitHeight: appH / 2
-            implicitWidth: appW
+            implicitHeight: 800
+            implicitWidth: 500
+            title: "Icebreaker"
             ListView {
                 id: pages_bar
-                spacing: 2
+                spacing: 0
                 anchors.top: parent.top
-                interactive: true
-                Layout.fillHeight: true
-                width: parent.width
+                interactive: false
+                width: base.appW
                 clip: true
-                height: base.appD25 + 10
+                height: base.appHD25 + 10
                 orientation: ListView.Horizontal
                 model: base.page_list
+                anchors.horizontalCenter: parent.horizontalCenter
 
                 Process {
                     id: page_switcher
@@ -40,9 +41,10 @@ Scope {
                 delegate: Rectangle {
                     id: page_button
                     required property string modelData
-                    implicitHeight: base.appD25
-                    implicitWidth: base.appW / 18
+                    width: pages_bar.width / base.page_list.length
+                    implicitHeight: base.appHD25
                     anchors.verticalCenter: parent.verticalCenter
+
                     radius: 15
                     color: modelData === "Quit" ? Theme.base08 : base.currentPage === modelData ? Theme.base0A : Theme.base0B
 
@@ -75,9 +77,10 @@ Scope {
             Rectangle {
                 id: page_area
                 color: Theme.base0A
-                y: base.appD25 + 10
-                implicitWidth: appW
-                implicitHeight: appH - 32
+                y: base.appHD25 + 10
+                implicitWidth: base.width
+                implicitHeight: base.height
+                Layout.fillHeight: true
                 Timer {
                     interval: 0
                     running: true

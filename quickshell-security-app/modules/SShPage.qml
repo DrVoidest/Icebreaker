@@ -19,7 +19,7 @@ Item {
             Layout.fillHeight: true
             width: parent.width
             clip: true
-            height: parent.height
+            height: parent.height - (parent.height / 20)
             orientation: ListView.VerticalTopToBottom
 
             model: FileReader.test_file.slice(0, -1)
@@ -35,15 +35,6 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
             }
-        }
-        RegularText {
-            text: "I loaded"
-            color: Theme.base00
-            width: parent.width
-            height: parent.height
-
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
         }
     }
     Process {
