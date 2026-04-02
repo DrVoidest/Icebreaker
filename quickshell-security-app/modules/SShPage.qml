@@ -12,23 +12,9 @@ Item {
         height: parent.height
         color: Theme.base05
 
-        //Rectangle {
-        //  id: bob
-        // implicitWidth: toggle1.implicitWidth + Theme.margins
-        // implicitHeight: toggle1.implicitHeight + Theme.margins
-        // color: Theme.base0C
-        // Toggle {
-        //   id: toggle1
-        //  labelText: FileReader.test_file[0]
-        // anchors.verticalCenter: parent.verticalCenter
-        // anchors.horizontalCenter: parent.horizontalCenter
-        // }
-        //}
         ListView {
             spacing: 5
-            //y: 50
             anchors.top: parent.top
-            //topMargin: 100
             interactive: true
             Layout.fillHeight: true
             width: parent.width
