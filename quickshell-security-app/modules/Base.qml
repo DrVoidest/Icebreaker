@@ -14,7 +14,7 @@ Scope {
             readonly property var appH: modelData.height / 2
             readonly property var appW: modelData.width / 2
             readonly property int appD25: base.appH / 25
-            readonly property var page_list: ["Home", "SSh", "Quit"]
+            readonly property var page_list: ["Home", "SSh", "ClamAV", "Quit"]
             property string currentPage: page_list[0]
 
             screen: modelData
@@ -41,7 +41,7 @@ Scope {
                     id: page_button
                     required property string modelData
                     implicitHeight: base.appD25
-                    implicitWidth: base.appW / 20
+                    implicitWidth: base.appW / 18
                     anchors.verticalCenter: parent.verticalCenter
                     radius: 15
                     color: modelData === "Quit" ? Theme.base08 : base.currentPage === modelData ? Theme.base0A : Theme.base0B
