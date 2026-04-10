@@ -10,7 +10,7 @@ Item {
         height: parent.height
         color: Theme.base0B
         RegularText {
-            text: "I loaded"
+            text: "ClamAVWIP"
             color: Theme.base00
             width: parent.width
             height: parent.height

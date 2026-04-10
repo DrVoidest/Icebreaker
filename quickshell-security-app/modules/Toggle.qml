@@ -38,7 +38,8 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     toggle_row.isToggled = !toggle_row.isToggled;
-                    FileReader.toggle(root.bool_value);
+                    FileReader.toggle(root.labelText + root.isToggled);
+                    console.log(root.labelText + root.isToggled);
                 }
             }
             Rectangle {

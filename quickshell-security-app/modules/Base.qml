@@ -17,7 +17,6 @@ Scope {
             readonly property var page_list: ["Home", "SSh", "ClamAV", "Quit"]
             property string currentPage: page_list[0]
 
-            //screen: modelData
             color: Theme.base00
             implicitHeight: 800
             implicitWidth: 500
