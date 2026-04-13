@@ -16,7 +16,6 @@ Scope {
             color: Theme.base00
             implicitHeight: 30 // Should be the same size as the rectangles
             implicitWidth: 30
-
             anchors {
                 top: true
                 left: true

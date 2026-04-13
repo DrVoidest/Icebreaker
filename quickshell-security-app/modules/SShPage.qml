@@ -14,7 +14,9 @@ Item {
     readonly property var logLevelList: ["QUIET", "FATAL", "ERROR", "INFO", "VERBOSE"]
     readonly property var sliderConfigs: ["LogLevel", "AddressFamily"]
     readonly property var typing_configs: ["AllowUsers", "AllowGroups"]
-    readonly property var hidden_configs: ["AuthorizedPrincipalsFile", "Banner", "Subsystem", "AuthorizedKeysFile", "HostKey"]
+    readonly property var endCapConfigs: ["HostKey"]
+
+    readonly property var hidden_configs: ["AuthorizedPrincipalsFile", "Banner", "Subsystem", "AuthorizedKeysFile"]
 
     Rectangle {
         width: parent.width
@@ -31,7 +33,7 @@ Item {
             height: parent.height - (parent.height / 20)
             orientation: ListView.VerticalTopToBottom
 
-            model: FileReader.test_file.slice(0, -1)
+            model: FileReader.sshConfigFile.slice(0, -1)
             delegate: Loader {
                 id: delegate_loader
                 required property string modelData
@@ -46,9 +48,9 @@ Item {
 
                 readonly property bool isTypingBox: typing_configs.some(key => modelData.startsWith(key))
                 readonly property bool isHiddenBox: hidden_configs.some(key => modelData.startsWith(key))
+                readonly property bool isEndBox: endCapConfigs.some(key => modelData.startsWith(key))
 
-                sourceComponent: isSelectBox ? null : isIntBox ? null : isTypingBox ? null : isHiddenBox ? null : isSliderBox ? sliderComponet : toggle_delegate
-                //sourceComponent: sliderComponet
+                sourceComponent: isSelectBox ? selectComponet : isIntBox ? null : isTypingBox ? null : isHiddenBox ? null : isSliderBox ? sliderComponet : isEndBox ? endCapComponet : toggleComponet
                 Component {
                     id: ssh_lists
                     Item {
@@ -59,28 +61,37 @@ Item {
                     }
                 }
                 Component {
+                    id: endCapComponet
+                    Rectangle {
+                        id: endCapBoundingBox
+                        implicitWidth: 50 + Theme.margins
+                        implicitHeight: 50 + Theme.margins
+                        color: Theme.base05
+                    }
+                }
+                Component {
                     id: sliderComponet
                     Rectangle {
                         id: sliderBoundingBox
                         implicitWidth: sliderDelegate.implicitWidth + Theme.margins
                         implicitHeight: sliderDelegate.implicitHeight + Theme.margins
-                        color: Theme.base0C
+                        color: Theme.base05
 
                         CustomSlider {
                             id: sliderDelegate
-                            sliderLabel: delegate_loader.delegateKey + ": "
+                            sliderLabel: delegate_loader.delegateKey + ":" + delegate_loader.delegateValue
                             itemList: delegate_loader.delegateKey === "LogLevel" ? ssh_item.logLevelList : ssh_item.addressFamilyList
                         }
                     }
                 }
 
                 Component {
-                    id: select_delegate
+                    id: selectComponet
                     Rectangle {
                         id: select_rec
-                        implicitWidth: select_selector.implicitWidth + Theme.margins
-                        implicitHeight: select_selector.implicitHeight + Theme.margins
-                        color: Theme.base0C
+                        implicitWidth: selectSelector.implicitWidth + Theme.margins
+                        implicitHeight: selectSelector.implicitHeight + Theme.margins
+                        color: Theme.base05
                         Process {
                             id: ssh_proc
                             command: delegate_loader.delegateKey === "KexAlgorithms" ? ["ssh", "-Q", "kex"] : delegate_loader.delegateKey === "Macs" ? ["ssh", "-Q", "mac"] : delegate_loader.delegateKey === "Ciphers" ? ["ssh", "-Q", "cipher"] : "We should never get here"
@@ -89,12 +100,12 @@ Item {
                             stdout: StdioCollector {
                                 id: ssh_output
                                 onStreamFinished: {
-                                    select_selector.options = text.split("\n").filter(line => line.trim() !== "");
+                                    selectSelector.options = text.split("\n").filter(line => line.trim() !== "");
                                 }
                             }
                         }
                         MultiSelector {
-                            id: select_selector
+                            id: selectSelector
                             width: parent.width
                             text: delegate_loader.delegateKey + ":"
                             options: ["Will", "be overwriten"]
@@ -111,15 +122,15 @@ Item {
                     }
                 }
                 Component {
-                    id: toggle_delegate
+                    id: toggleComponet
                     Rectangle {
                         id: toggle_rec
-                        implicitWidth: list_toggle1.implicitWidth + Theme.margins
-                        implicitHeight: list_toggle1.implicitHeight + Theme.margins
-                        color: Theme.base0C
+                        implicitWidth: toggleSwitch.implicitWidth + Theme.margins
+                        implicitHeight: toggleSwitch.implicitHeight + Theme.margins
+                        color: Theme.base05
 
                         Toggle {
-                            id: list_toggle1
+                            id: toggleSwitch
                             labelText: delegate_loader.delegateKey + ":"
                             isToggled: delegate_loader.delegateValue === "yes" ? true : false
                             anchors.verticalCenter: parent.verticalCenter
@@ -129,10 +140,5 @@ Item {
                 }
             }
         }
-    }
-
-    Process {
-        id: value_changer
-        running: false
     }
 }

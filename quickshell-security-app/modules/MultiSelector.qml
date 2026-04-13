@@ -12,8 +12,10 @@ Item {
     // ✅ Signal emits the full selected list whenever it changes
     signal selectionChanged(var selected)
 
-    implicitWidth: flow.implicitWidth
-    implicitHeight: flow.implicitHeight
+    implicitWidth: parent.width
+    implicitHeight: flow.height
+    //implicitWidth: 300
+    //implicitHeight: 300
 
     RegularText {
         id: selectorName
@@ -26,7 +28,7 @@ Item {
     Flow {
         id: flow
         x: 0 + selectorName.width
-        width: parent.width
+        width: parent.width - x
         spacing: 5
 
         Repeater {
@@ -39,13 +41,15 @@ Item {
 
                 readonly property bool isSelected: multi_selector.selected.includes(modelData)
 
-                implicitWidth: chip_text.implicitWidth + 20
-                implicitHeight: chip_text.implicitHeight + 10
+                implicitWidth: 0
+                implicitHeight: 0
                 radius: 10
 
-                // ✅ Different color when selected
                 color: isSelected ? Theme.base0A : Theme.base03
-
+                Component.onCompleted: {
+                    implicitWidth = chip_text.implicitWidth + 20;
+                    implicitHeight = chip_text.implicitHeight + 10;
+                }
                 RegularText {
                     id: chip_text
                     text: option_chip.modelData

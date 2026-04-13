@@ -7,7 +7,10 @@ Item {
     property int itemListLen: itemList.length - 1 // Accounts for qt counting for zero in the slider control
     property int longestWordLen: Math.max(...itemList.map(s => s.length)) + 1 //+1 for spacing
     property var paddedItemList: itemList.map(s => s.padEnd(longestWordLen))
-    property string sliderLabel: "cool "
+    property string sliderLabel: "cool"
+    property string sliderLabelStart: sliderLabel.split(":")[0]
+    property string sliderLabelEnd: sliderLabel.split(":")[1]
+    property int currentIndex: paddedItemList.findIndex(s => s.trim() === sliderLabelEnd.trim())
     implicitHeight: sliderRow.implicitHeight
     implicitWidth: sliderRow.implicitWidth
     Row {
@@ -16,14 +19,14 @@ Item {
 
         RegularText {
             id: labelText
-            text: customSlider.sliderLabel
+            text: customSlider.sliderLabelStart + ": "
             color: Theme.base00
             anchors.verticalCenter: parent.verticalCenter
         }
 
         RegularText {
             id: sliderText
-            text: customSlider.paddedItemList[0]
+            text: customSlider.paddedItemList[sliderControl.value]
             color: Theme.base00
             anchors.verticalCenter: parent.verticalCenter
         }
@@ -32,7 +35,8 @@ Item {
             id: sliderControl
             from: 0
             stepSize: 1
-            snapMode: Slider.SnapAlways
+            snapMode: Slider.SnapOnRelease
+            value: customSlider.currentIndex
             to: customSlider.itemListLen
             x: sliderText.x + sliderText.implicitWidth + Theme.margins
             anchors.verticalCenter: parent.verticalCenter
@@ -65,7 +69,6 @@ Item {
             onMoved: {
                 const index = Math.round(position * customSlider.itemListLen);
                 sliderText.text = customSlider.paddedItemList[index];
-                console.log("User selected " + customSlider.paddedItemList[index] + " on " + customSlider.sliderLabel);
                 FileReader.slider(customSlider.sliderLabel.split(":")[0], customSlider.paddedItemList[index]);
             }
         }
