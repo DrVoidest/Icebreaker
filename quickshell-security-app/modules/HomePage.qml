@@ -7,7 +7,6 @@ Item {
     id: home_item
     anchors.fill: parent
     property string clamStatus: "No value passed"
-    property var test: clamStatus.split(" ")
     property string sshStatus: "No value passed"
 
     Rectangle {
@@ -16,10 +15,11 @@ Item {
         height: parent.height
         color: Theme.base00
         Row {
+            x: Theme.margins
             Column {
                 RegularText {
                     id: statusTop
-                    text: "Status: "
+                    text: "Status:"
                     color: Theme.base07
                     x: 0
                     height: 50
@@ -27,14 +27,14 @@ Item {
 
                 RegularText {
                     id: clamTitle
-                    text: "ClamAV:"
+                    text: "ClamAV: "
                     color: Theme.base07
                     x: 0
                     height: 50
                 }
                 RegularText {
                     id: sshTitle
-                    text: "SShd:  "
+                    text: "SShd:   "
                     color: Theme.base07
                     x: 0
                     height: 50
@@ -43,10 +43,10 @@ Item {
             Column {
                 RegularText {
                     id: statusTitleTop
-                    text: test[6] === "active" ? "active" : "dead"
-                    color: test[6] === "active" ? Theme.base0B : Theme.base08
+                    text: "Place holder"
                     x: 0
                     height: 50
+                    color: Theme.base00
                 }
 
                 RegularText {

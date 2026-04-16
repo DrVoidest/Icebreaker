@@ -21,7 +21,6 @@ Item {
     Rectangle {
         width: parent.width
         height: parent.height
-        color: Theme.base05
 
         ListView {
             spacing: 0
@@ -66,7 +65,7 @@ Item {
                         id: endCapBoundingBox
                         implicitWidth: 50 + Theme.margins
                         implicitHeight: 50 + Theme.margins
-                        color: Theme.base05
+                        color: Theme.base00
                     }
                 }
                 Component {
@@ -75,7 +74,7 @@ Item {
                         id: sliderBoundingBox
                         implicitWidth: sliderDelegate.implicitWidth + Theme.margins
                         implicitHeight: sliderDelegate.implicitHeight + Theme.margins
-                        color: Theme.base05
+                        color: Theme.base00
 
                         CustomSlider {
                             id: sliderDelegate
@@ -91,7 +90,7 @@ Item {
                         id: select_rec
                         implicitWidth: selectSelector.implicitWidth + Theme.margins
                         implicitHeight: selectSelector.implicitHeight + Theme.margins
-                        color: Theme.base05
+                        color: Theme.base00
                         Process {
                             id: ssh_proc
                             command: delegate_loader.delegateKey === "KexAlgorithms" ? ["ssh", "-Q", "kex"] : delegate_loader.delegateKey === "Macs" ? ["ssh", "-Q", "mac"] : delegate_loader.delegateKey === "Ciphers" ? ["ssh", "-Q", "cipher"] : "We should never get here"
@@ -127,14 +126,14 @@ Item {
                         id: toggle_rec
                         implicitWidth: toggleSwitch.implicitWidth + Theme.margins
                         implicitHeight: toggleSwitch.implicitHeight + Theme.margins
-                        color: Theme.base05
+                        color: Theme.base00
 
                         Toggle {
                             id: toggleSwitch
                             labelText: delegate_loader.delegateKey + ":"
                             isToggled: delegate_loader.delegateValue === "yes" ? true : false
                             anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            //anchors.horizontalCenter: parent.horizontalCenter
                         }
                     }
                 }

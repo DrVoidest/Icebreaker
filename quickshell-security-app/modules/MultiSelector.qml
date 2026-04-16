@@ -4,7 +4,6 @@ import QtQuick.Layouts
 
 Item {
     id: multi_selector
-
     // ✅ Input list and output selection
     property var options: []
     property var selected: []
@@ -14,13 +13,12 @@ Item {
 
     implicitWidth: parent.width
     implicitHeight: flow.height
-    //implicitWidth: 300
-    //implicitHeight: 300
 
     RegularText {
         id: selectorName
         text: multi_selector.text + " "
-        color: Theme.base00
+        x: Theme.margins
+        color: Theme.base07
         anchors.verticalCenter: parent.verticalCenter
     }
 
@@ -52,6 +50,7 @@ Item {
                 }
                 RegularText {
                     id: chip_text
+
                     text: option_chip.modelData
                     color: Theme.base00
                     anchors.centerIn: parent

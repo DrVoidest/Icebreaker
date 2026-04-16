@@ -6,9 +6,17 @@ import Quickshell.Io
 Singleton {
     id: root
     readonly property var sshConfigFile: reader.text().split("\n")
+    property var scanData: JSON.parse(jsonReader.text())
     FileView {
         id: reader
         path: Qt.resolvedUrl("../sshd_config")
+        watchChanges: true
+        onFileChanged: this.reload()
+        blockLoading: true
+    }
+    FileView {
+        id: jsonReader
+        path: Qt.resolvedUrl("../clamdscan.json")
         watchChanges: true
         onFileChanged: this.reload()
         blockLoading: true

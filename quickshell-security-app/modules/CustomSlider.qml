@@ -16,18 +16,18 @@ Item {
     Row {
         id: sliderRow
         anchors.verticalCenter: parent.verticalCenter
-
+        x: Theme.margins
         RegularText {
             id: labelText
             text: customSlider.sliderLabelStart + ": "
-            color: Theme.base00
+            color: Theme.base07
             anchors.verticalCenter: parent.verticalCenter
         }
 
         RegularText {
             id: sliderText
             text: customSlider.paddedItemList[sliderControl.value]
-            color: Theme.base00
+            color: Theme.base07
             anchors.verticalCenter: parent.verticalCenter
         }
 

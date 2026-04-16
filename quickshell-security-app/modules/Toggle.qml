@@ -11,12 +11,13 @@ Item {
     Row {
         id: toggle_row
         spacing: 12
+        x: Theme.margins
         property bool isToggled: root.bool_value[1] === "yes" ? true : false
         property var line_values: "No values passed"
         RegularText {
             id: text_box
             text: root.bool_value[0]
-            color: Theme.base00
+            color: Theme.base07
             visible: root.labelText !== "" // Hide completely if no text is set
             anchors.verticalCenter: parent.verticalCenter // Vertically align with the toggle
         }

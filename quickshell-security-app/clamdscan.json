@@ -1,0 +1,24 @@
+{
+  "problem_items": [
+    {
+      "file": "/home/neon/Downloads/Mushroom_Kingdom_Server-disk1-002.vmdk",
+      "status": "Empty file"
+    },
+    {
+      "file": "/home/neon/Downloads/test",
+      "status": "Empty file"
+    }
+  ],
+  "summary": {
+    "Known viruses": "3758248",
+    "Engine version": "1.4.3",
+    "Scanned directories": "1",
+    "Scanned files": "40",
+    "Infected files": "0",
+    "Data scanned": "368.67 MB",
+    "Data read": "29570.08 MB (ratio 0.01:1)",
+    "Time": "176.337 sec (2 m 56 s)",
+    "Start Date": "2026:04:15 08:09:46",
+    "End Date": "2026:04:15 08:12:42"
+  }
+}
