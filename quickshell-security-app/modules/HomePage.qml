@@ -55,7 +55,7 @@ Item {
                 RegularText {
                     id: clamText
                     text: homeItem.clamStatus.split(" ")[6] === "active" ? "active" : "dead"
-                    color: homeItem.clamStatus.split(" ")[6] === "active" ? Theme.base0B : Theme.themeData.colors["base08"]
+                    color: homeItem.clamStatus.split(" ")[6] === "active" ? Theme.themeData.colors["base0B"] : Theme.themeData.colors["base08"]
                     x: 0
                     height: 50
                 }
@@ -63,7 +63,7 @@ Item {
                     id: sshText
                     text: homeItem.sshStatus.split(" ")[6] === "active" ? "active" : "dead"
 
-                    color: homeItem.sshStatus.split(" ")[6] === "active" ? Theme.base0B : Theme.themeData.colors["base08"]
+                    color: homeItem.sshStatus.split(" ")[6] === "active" ? Theme.themeData.colors["base0B"] : Theme.themeData.colors["base08"]
 
                     x: 0
                     height: 50

@@ -92,7 +92,7 @@ ListView {
         //Layout.fillHeight: true
         radius: 15
 
-        color: isCurrent ? Theme.themeData.colors["base0A"] : Theme.base0B
+        color: isCurrent ? Theme.themeData.colors["base0A"] : Theme.themeData.colors["base0B"]
 
         Behavior on width {
             SpringAnimation {

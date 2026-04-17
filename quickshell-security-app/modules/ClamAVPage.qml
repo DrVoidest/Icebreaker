@@ -49,7 +49,7 @@ Item {
                     onClicked: {
                         console.log("Download folder scan starting");
                         clamAVItem.isScaning = true;
-                        downloadsScanerBox.color = Theme.base0B;
+                        downloadsScanerBox.color = Theme.themeData.colors["base0B"];
                         clamAVItem.currentScanOutput = "Scan running";
                         clamScanRunner.command = ["sh", "-c", "clamscan ~/Downloads -o > ../clamdscan.log"];
 

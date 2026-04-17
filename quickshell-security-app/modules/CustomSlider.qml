@@ -54,7 +54,7 @@ Item {
                 Rectangle {
                     width: sliderControl.visualPosition * parent.width
                     height: parent.height
-                    color: Theme.base0B
+                    color: Theme.themeData.colors["base0B"]
                     radius: 2
                 }
             }

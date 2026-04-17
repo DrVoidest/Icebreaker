@@ -26,7 +26,7 @@ Item {
             implicitHeight: 30
             implicitWidth: 80
             radius: height / 2
-            color: toggleRow.isToggled ? Theme.base0B : Theme.themeData.colors["base03"]
+            color: toggleRow.isToggled ? Theme.themeData.colors["base0B"] : Theme.themeData.colors["base03"]
             anchors.verticalCenter: parent.verticalCenter
             Behavior on color {
                 ColorAnimation {
