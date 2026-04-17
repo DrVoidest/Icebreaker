@@ -1,5 +1,5 @@
 {
-  description = "A simple flake for running custom packages";
+  description = "Flake for Icebreaker using nixpkgs unstable and quickshell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -19,7 +19,6 @@
     pkgs = import nixpkgs {inherit system;};
   in {
     packages.${system} = {
-      #@TODO clean up to make the tooling more usable
       default = pkgs.hello;
       quickshell = quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
         withX11 = false;

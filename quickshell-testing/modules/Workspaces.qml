@@ -120,7 +120,7 @@ ListView {
             font.pointSize: Theme.fontSize
             color: Theme.themeData.colors["base00"]
             text: parent.isCurrent ? "|" + parent.current_workspace_index + "|" : parent.current_workspace_index
-            Layout.leftMargin: Config.margins
+            Layout.leftMargin: Theme.margins
         }
         MouseArea {
             id: workspace_mouse_area
