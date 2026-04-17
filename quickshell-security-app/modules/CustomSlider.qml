@@ -49,7 +49,7 @@ Item {
                 width: sliderControl.availableWidth
                 height: implicitHeight
                 radius: 2
-                color: Theme.base03
+                color: Theme.themeData.colors["base03"]
 
                 Rectangle {
                     width: sliderControl.visualPosition * parent.width
