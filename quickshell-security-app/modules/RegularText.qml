@@ -14,7 +14,7 @@ Item {
         id: regularText //test
         font.family: Theme.fontFamily
         font.pointSize: Theme.fontSize
-        color: Theme.base05
+        color: Theme.themeData.colors["base05"]
 
         width: parent.width
         height: parent.height
