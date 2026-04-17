@@ -6,22 +6,22 @@ import Quickshell
 import Quickshell.Io
 
 Item {
-    id: ssh_item
+    id: sshItem
     anchors.fill: parent
-    readonly property var int_configs: ["ClientAliveCountMax", "ClientAliveInterval", "LoginGraceTime", "MaxAuthTries", "MaxSessions", "MaxStartups", "Protocol", "Port"]
-    readonly property var select_configs: ["Ciphers", "KexAlgorithms", "Macs"] // Stuff to add: "LogLevel", "AddressFamily"
+    readonly property var intConfigs: ["ClientAliveCountMax", "ClientAliveInterval", "LoginGraceTime", "MaxAuthTries", "MaxSessions", "MaxStartups", "Protocol", "Port"]
+    readonly property var selectConfigs: ["Ciphers", "KexAlgorithms", "Macs"] // Stuff to add: "LogLevel", "AddressFamily"
     readonly property var addressFamilyList: ["any", "inet", "inet6"]
     readonly property var logLevelList: ["QUIET", "FATAL", "ERROR", "INFO", "VERBOSE"]
     readonly property var sliderConfigs: ["LogLevel", "AddressFamily"]
-    readonly property var typing_configs: ["AllowUsers", "AllowGroups"]
+    readonly property var typingConfigs: ["AllowUsers", "AllowGroups"]
     readonly property var endCapConfigs: ["HostKey"]
 
-    readonly property var hidden_configs: ["AuthorizedPrincipalsFile", "Banner", "Subsystem", "AuthorizedKeysFile"]
+    readonly property var hiddenConfigs: ["AuthorizedPrincipalsFile", "Banner", "Subsystem", "AuthorizedKeysFile"]
 
     Rectangle {
         width: parent.width
         height: parent.height
-
+        color: Theme.base00
         ListView {
             spacing: 0
             anchors.top: parent.top
@@ -34,24 +34,24 @@ Item {
 
             model: FileReader.sshConfigFile.slice(0, -1)
             delegate: Loader {
-                id: delegate_loader
+                id: delegateLoader
                 required property string modelData
                 width: ListView.view.width
 
                 readonly property string delegateKey: modelData.split(" ")[0]
                 readonly property string delegateValue: modelData.split(" ").slice(1).join(" ")
 
-                readonly property bool isIntBox: int_configs.some(key => modelData.startsWith(key))
-                readonly property bool isSelectBox: select_configs.some(key => modelData.startsWith(key))
+                readonly property bool isIntBox: intConfigs.some(key => modelData.startsWith(key))
+                readonly property bool isSelectBox: selectConfigs.some(key => modelData.startsWith(key))
                 readonly property bool isSliderBox: sliderConfigs.some(key => modelData.startsWith(key))
 
-                readonly property bool isTypingBox: typing_configs.some(key => modelData.startsWith(key))
-                readonly property bool isHiddenBox: hidden_configs.some(key => modelData.startsWith(key))
+                readonly property bool isTypingBox: typingConfigs.some(key => modelData.startsWith(key))
+                readonly property bool isHiddenBox: hiddenConfigs.some(key => modelData.startsWith(key))
                 readonly property bool isEndBox: endCapConfigs.some(key => modelData.startsWith(key))
 
                 sourceComponent: isSelectBox ? selectComponet : isIntBox ? null : isTypingBox ? null : isHiddenBox ? null : isSliderBox ? sliderComponet : isEndBox ? endCapComponet : toggleComponet
                 Component {
-                    id: ssh_lists
+                    id: sshLists
                     Item {
                         width: 0
                         height: 0
@@ -78,8 +78,8 @@ Item {
 
                         CustomSlider {
                             id: sliderDelegate
-                            sliderLabel: delegate_loader.delegateKey + ":" + delegate_loader.delegateValue
-                            itemList: delegate_loader.delegateKey === "LogLevel" ? ssh_item.logLevelList : ssh_item.addressFamilyList
+                            sliderLabel: delegateLoader.delegateKey + ":" + delegateLoader.delegateValue
+                            itemList: delegateLoader.delegateKey === "LogLevel" ? sshItem.logLevelList : sshItem.addressFamilyList
                         }
                     }
                 }
@@ -87,17 +87,17 @@ Item {
                 Component {
                     id: selectComponet
                     Rectangle {
-                        id: select_rec
+                        id: selectRectangle
                         implicitWidth: selectSelector.implicitWidth + Theme.margins
                         implicitHeight: selectSelector.implicitHeight + Theme.margins
                         color: Theme.base00
                         Process {
-                            id: ssh_proc
-                            command: delegate_loader.delegateKey === "KexAlgorithms" ? ["ssh", "-Q", "kex"] : delegate_loader.delegateKey === "Macs" ? ["ssh", "-Q", "mac"] : delegate_loader.delegateKey === "Ciphers" ? ["ssh", "-Q", "cipher"] : "We should never get here"
+                            id: sshProc
+                            command: delegateLoader.delegateKey === "KexAlgorithms" ? ["ssh", "-Q", "kex"] : delegateLoader.delegateKey === "Macs" ? ["ssh", "-Q", "mac"] : delegateLoader.delegateKey === "Ciphers" ? ["ssh", "-Q", "cipher"] : "We should never get here"
                             running: true
 
                             stdout: StdioCollector {
-                                id: ssh_output
+                                id: sshOutput
                                 onStreamFinished: {
                                     selectSelector.options = text.split("\n").filter(line => line.trim() !== "");
                                 }
@@ -106,14 +106,14 @@ Item {
                         MultiSelector {
                             id: selectSelector
                             width: parent.width
-                            text: delegate_loader.delegateKey + ":"
+                            text: delegateLoader.delegateKey + ":"
                             options: ["Will", "be overwriten"]
 
-                            selected: delegate_loader.delegateValue ? delegate_loader.delegateValue.split(",") : []
+                            selected: delegateLoader.delegateValue ? delegateLoader.delegateValue.split(",") : []
 
                             onSelectionChanged: function (sel) {
-                                console.log(delegate_loader.delegateKey + " selected: " + sel);
-                                FileReader.multiSelector(delegate_loader.delegateKey, sel);
+                                console.log(delegateLoader.delegateKey + " selected: " + sel);
+                                FileReader.multiSelector(delegateLoader.delegateKey, sel);
                             }
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.horizontalCenter: parent.horizontalCenter
@@ -123,15 +123,15 @@ Item {
                 Component {
                     id: toggleComponet
                     Rectangle {
-                        id: toggle_rec
+                        id: toggleRectangle
                         implicitWidth: toggleSwitch.implicitWidth + Theme.margins
                         implicitHeight: toggleSwitch.implicitHeight + Theme.margins
                         color: Theme.base00
 
                         Toggle {
                             id: toggleSwitch
-                            labelText: delegate_loader.delegateKey + ":"
-                            isToggled: delegate_loader.delegateValue === "yes" ? true : false
+                            labelText: delegateLoader.delegateKey + ":"
+                            isToggled: delegateLoader.delegateValue === "yes" ? true : false
                             anchors.verticalCenter: parent.verticalCenter
                             //anchors.horizontalCenter: parent.horizontalCenter
                         }
