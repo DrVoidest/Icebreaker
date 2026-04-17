@@ -12,7 +12,7 @@ Item {
 
     Text {
         id: regularText //test
-        font.family: Theme.font_family
+        font.family: Theme.fontFamily
         font.pointSize: Theme.fontSize
         color: Theme.base05
 

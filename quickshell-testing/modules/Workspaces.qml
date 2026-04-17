@@ -112,7 +112,7 @@ ListView {
 
         Text {
             id: workspace_text
-            font.family: Theme.font_family
+            font.family: Theme.fontFamily
             width: parent.width
             height: parent.height
             horizontalAlignment: Text.AlignHCenter

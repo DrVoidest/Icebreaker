@@ -7,7 +7,7 @@ import QtQuick
 Singleton {
     id: root
     // Fonts
-    readonly property string font_family: "Atkinson Hyperlegible Mono" // To make it look fancy turn on italic
+    readonly property string fontFamily: "Atkinson Hyperlegible Mono" // To make it look fancy turn on italic
     readonly property int fontSize: parseInt(Quickshell.env("FONT_SIZE")) || 13
     // Colors
     readonly property color base00: "#0c1118" // Used for base
