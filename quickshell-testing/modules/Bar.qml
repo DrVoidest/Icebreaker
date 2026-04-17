@@ -13,7 +13,7 @@ Scope {
             required property var modelData
 
             screen: modelData
-            color: Theme.base00
+            color: Theme.themeData.colors["base00"]
             implicitHeight: 30 // Should be the same size as the rectangles
             implicitWidth: 30
             anchors {

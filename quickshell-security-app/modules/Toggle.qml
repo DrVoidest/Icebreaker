@@ -61,7 +61,7 @@ Item {
                     text: toggleRow.isToggled ? "1" : "0"
                     implicitHeight: parent.implicitHeight
                     implicitWidth: parent.implicitHeight
-                    color: Theme.base00
+                    color: Theme.themeData.colors["base00"]
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }

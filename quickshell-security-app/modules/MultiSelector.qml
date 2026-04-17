@@ -52,7 +52,7 @@ Item {
                     id: chipText
 
                     text: optionChip.modelData
-                    color: Theme.base00
+                    color: Theme.themeData.colors["base00"]
                     anchors.centerIn: parent
                 }
 

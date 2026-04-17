@@ -21,7 +21,7 @@ Item {
     Rectangle {
         width: parent.width
         height: parent.height
-        color: Theme.base00
+        color: Theme.themeData.colors["base00"]
         ListView {
             spacing: 0
             anchors.top: parent.top
@@ -65,7 +65,7 @@ Item {
                         id: endCapBoundingBox
                         implicitWidth: 50 + Theme.margins
                         implicitHeight: 50 + Theme.margins
-                        color: Theme.base00
+                        color: Theme.themeData.colors["base00"]
                     }
                 }
                 Component {
@@ -74,7 +74,7 @@ Item {
                         id: sliderBoundingBox
                         implicitWidth: sliderDelegate.implicitWidth + Theme.margins
                         implicitHeight: sliderDelegate.implicitHeight + Theme.margins
-                        color: Theme.base00
+                        color: Theme.themeData.colors["base00"]
 
                         CustomSlider {
                             id: sliderDelegate
@@ -90,7 +90,7 @@ Item {
                         id: selectRectangle
                         implicitWidth: selectSelector.implicitWidth + Theme.margins
                         implicitHeight: selectSelector.implicitHeight + Theme.margins
-                        color: Theme.base00
+                        color: Theme.themeData.colors["base00"]
                         Process {
                             id: sshProc
                             command: delegateLoader.delegateKey === "KexAlgorithms" ? ["ssh", "-Q", "kex"] : delegateLoader.delegateKey === "Macs" ? ["ssh", "-Q", "mac"] : delegateLoader.delegateKey === "Ciphers" ? ["ssh", "-Q", "cipher"] : "We should never get here"
@@ -126,7 +126,7 @@ Item {
                         id: toggleRectangle
                         implicitWidth: toggleSwitch.implicitWidth + Theme.margins
                         implicitHeight: toggleSwitch.implicitHeight + Theme.margins
-                        color: Theme.base00
+                        color: Theme.themeData.colors["base00"]
 
                         Toggle {
                             id: toggleSwitch

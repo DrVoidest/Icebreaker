@@ -24,7 +24,7 @@ Item {
     Rectangle {
         width: parent.width
         height: parent.height
-        color: Theme.base00
+        color: Theme.themeData.colors["base00"]
         Column {
             Rectangle {
                 id: downloadsScanerBox
@@ -38,7 +38,7 @@ Item {
                     width: parent.width
                     height: parent.height
 
-                    color: Theme.base00
+                    color: Theme.themeData.colors["base00"]
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -65,7 +65,7 @@ Item {
                 width: 15 + Theme.margins
                 height: width / 2
                 radius: 10
-                color: Theme.base00
+                color: Theme.themeData.colors["base00"]
             }
 
             Row {
@@ -90,7 +90,7 @@ Item {
                         text: "-"
                         width: parent.width
                         height: parent.height
-                        color: Theme.base00
+                        color: Theme.themeData.colors["base00"]
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
                     }
@@ -117,7 +117,7 @@ Item {
                 width: 15 + Theme.margins
                 height: width / 2
                 radius: 10
-                color: Theme.base00
+                color: Theme.themeData.colors["base00"]
             }
 
             RegularText {

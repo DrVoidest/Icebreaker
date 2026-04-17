@@ -13,7 +13,7 @@ Item {
         id: holding
         width: parent.width
         height: parent.height
-        color: Theme.base00
+        color: Theme.themeData.colors["base00"]
         Row {
             x: Theme.margins
             Column {
@@ -49,7 +49,7 @@ Item {
                     text: "Place holder"
                     x: 0
                     height: 50
-                    color: Theme.base00
+                    color: Theme.themeData.colors["base00"]
                 }
 
                 RegularText {

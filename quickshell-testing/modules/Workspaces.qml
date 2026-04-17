@@ -118,7 +118,7 @@ ListView {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pointSize: Theme.fontSize
-            color: Theme.base00
+            color: Theme.themeData.colors["base00"]
             text: parent.isCurrent ? "|" + parent.current_workspace_index + "|" : parent.current_workspace_index
             Layout.leftMargin: Config.margins
         }

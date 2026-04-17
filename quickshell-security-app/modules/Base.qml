@@ -17,7 +17,7 @@ Scope {
             readonly property var pageList: ["Home", "SSh", "ClamAV", "Quit"]
             property string currentPage: pageList[0]
 
-            color: Theme.base00
+            color: Theme.themeData.colors["base00"]
             implicitHeight: 800
             implicitWidth: 500
             title: "Icebreaker"
@@ -50,7 +50,7 @@ Scope {
                     RegularText {
                         id: pageText
                         text: pageButton.modelData
-                        color: Theme.base00
+                        color: Theme.themeData.colors["base00"]
                         width: parent.width
                         height: parent.height
 
