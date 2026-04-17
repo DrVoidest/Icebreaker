@@ -3,7 +3,7 @@ import QtQuick
 import QtQuick.Layouts
 
 Item {
-    id: multi_selector
+    id: multiSelector
     // ✅ Input list and output selection
     property var options: []
     property var selected: []
@@ -16,7 +16,7 @@ Item {
 
     RegularText {
         id: selectorName
-        text: multi_selector.text + " "
+        text: multiSelector.text + " "
         x: Theme.margins
         color: Theme.base07
         anchors.verticalCenter: parent.verticalCenter
@@ -30,14 +30,14 @@ Item {
         spacing: 5
 
         Repeater {
-            model: multi_selector.options
+            model: multiSelector.options
 
             delegate: Rectangle {
-                id: option_chip
+                id: optionChip
                 required property string modelData
                 required property int index
 
-                readonly property bool isSelected: multi_selector.selected.includes(modelData)
+                readonly property bool isSelected: multiSelector.selected.includes(modelData)
 
                 implicitWidth: 0
                 implicitHeight: 0
@@ -45,13 +45,13 @@ Item {
 
                 color: isSelected ? Theme.base0A : Theme.base03
                 Component.onCompleted: {
-                    implicitWidth = chip_text.implicitWidth + 20;
-                    implicitHeight = chip_text.implicitHeight + 10;
+                    implicitWidth = chipText.implicitWidth + 20;
+                    implicitHeight = chipText.implicitHeight + 10;
                 }
                 RegularText {
-                    id: chip_text
+                    id: chipText
 
-                    text: option_chip.modelData
+                    text: optionChip.modelData
                     color: Theme.base00
                     anchors.centerIn: parent
                 }
@@ -60,15 +60,15 @@ Item {
                     anchors.fill: parent
                     onClicked: {
                         // ✅ Toggle — add if missing, remove if present
-                        let current = [...multi_selector.selected];
-                        const i = current.indexOf(option_chip.modelData);
+                        let current = [...multiSelector.selected];
+                        const i = current.indexOf(optionChip.modelData);
                         if (i === -1)
-                            current.push(option_chip.modelData);
+                            current.push(optionChip.modelData);
                         else
                             current.splice(i, 1);
 
-                        multi_selector.selected = current;
-                        multi_selector.selectionChanged(current);
+                        multiSelector.selected = current;
+                        multiSelector.selectionChanged(current);
                     }
                 }
             }
