@@ -4,7 +4,7 @@ import Quickshell
 import Quickshell.Io
 
 Item {
-    id: home_item
+    id: homeItem
     anchors.fill: parent
     property string clamStatus: "No value passed"
     property string sshStatus: "No value passed"
@@ -51,16 +51,16 @@ Item {
 
                 RegularText {
                     id: clamText
-                    text: home_item.clamStatus.split(" ")[6] === "active" ? "active" : "dead"
-                    color: home_item.clamStatus.split(" ")[6] === "active" ? Theme.base0B : Theme.base08
+                    text: homeItem.clamStatus.split(" ")[6] === "active" ? "active" : "dead"
+                    color: homeItem.clamStatus.split(" ")[6] === "active" ? Theme.base0B : Theme.base08
                     x: 0
                     height: 50
                 }
                 RegularText {
                     id: sshText
-                    text: home_item.sshStatus.split(" ")[6] === "active" ? "active" : "dead"
+                    text: homeItem.sshStatus.split(" ")[6] === "active" ? "active" : "dead"
 
-                    color: home_item.sshStatus.split(" ")[6] === "active" ? Theme.base0B : Theme.base08
+                    color: homeItem.sshStatus.split(" ")[6] === "active" ? Theme.base0B : Theme.base08
 
                     x: 0
                     height: 50
@@ -75,7 +75,7 @@ Item {
 
         stdout: StdioCollector {
             onStreamFinished: {
-                home_item.clamStatus = text;
+                homeItem.clamStatus = text;
             }
         }
     }
@@ -86,7 +86,7 @@ Item {
 
         stdout: StdioCollector {
             onStreamFinished: {
-                home_item.sshStatus = text;
+                homeItem.sshStatus = text;
             }
         }
     }
