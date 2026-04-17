@@ -43,7 +43,7 @@ Item {
                 implicitHeight: 0
                 radius: 10
 
-                color: isSelected ? Theme.base0A : Theme.themeData.colors["base03"]
+                color: isSelected ? Theme.themeData.colors["base0A"] : Theme.themeData.colors["base03"]
                 Component.onCompleted: {
                     implicitWidth = chipText.implicitWidth + 20;
                     implicitHeight = chipText.implicitHeight + 10;

@@ -64,7 +64,7 @@ Item {
                 implicitWidth: 26
                 implicitHeight: 26
                 radius: 13
-                color: Theme.base0A
+                color: Theme.themeData.colors["base0A"]
             }
             onMoved: {
                 const index = Math.round(position * customSlider.itemListLen);

@@ -48,7 +48,7 @@ Item {
                 implicitHeight: parent.height
                 implicitWidth: height
                 radius: width / 2
-                color: Theme.base0A
+                color: Theme.themeData.colors["base0A"]
                 x: toggleRow.isToggled ? (booleanBase.width - width) : 0
 
                 Behavior on x {

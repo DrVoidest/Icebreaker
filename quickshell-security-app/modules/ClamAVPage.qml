@@ -31,7 +31,7 @@ Item {
                 width: 300 + Theme.margins
                 height: width / 8
                 radius: 10
-                color: Theme.base0A
+                color: Theme.themeData.colors["base0A"]
                 RegularText {
                     id: downloadsScanerText
                     text: "Scan Download's folder"
@@ -84,7 +84,7 @@ Item {
                     width: 25 + Theme.margins
                     height: width
                     radius: 10
-                    color: Theme.base0A
+                    color: Theme.themeData.colors["base0A"]
                     RegularText {
                         id: minusButtonText
                         text: "-"
