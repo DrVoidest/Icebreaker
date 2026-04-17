@@ -14,15 +14,15 @@ Scope {
             readonly property var appH: height
             readonly property var appW: width
             readonly property int appHD25: base.appH / 25
-            readonly property var page_list: ["Home", "SSh", "ClamAV", "Quit"]
-            property string currentPage: page_list[0]
+            readonly property var pageList: ["Home", "SSh", "ClamAV", "Quit"]
+            property string currentPage: pageList[0]
 
             color: Theme.base00
             implicitHeight: 800
             implicitWidth: 500
             title: "Icebreaker"
             ListView {
-                id: pages_bar
+                id: pageBar
                 spacing: 0
                 anchors.top: parent.top
                 interactive: false
@@ -30,17 +30,17 @@ Scope {
                 clip: true
                 height: base.appHD25 + 10
                 orientation: ListView.Horizontal
-                model: base.page_list
+                model: base.pageList
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Process {
-                    id: page_switcher
+                    id: pageSwitcher
                     running: false
                 }
                 delegate: Rectangle {
-                    id: page_button
+                    id: pageButton
                     required property string modelData
-                    width: pages_bar.width / base.page_list.length
+                    width: pageBar.width / base.pageList.length
                     implicitHeight: base.appHD25
                     anchors.verticalCenter: parent.verticalCenter
 
@@ -48,8 +48,8 @@ Scope {
                     color: modelData === "Quit" ? Theme.base08 : base.currentPage === modelData ? Theme.base0A : Theme.base0B
 
                     RegularText {
-                        id: page_text
-                        text: page_button.modelData
+                        id: pageText
+                        text: pageButton.modelData
                         color: Theme.base00
                         width: parent.width
                         height: parent.height
@@ -58,23 +58,23 @@ Scope {
                         verticalAlignment: Text.AlignVCenter
                     }
                     MouseArea {
-                        id: page_mouse_area
+                        id: pageMouseArea
                         anchors.fill: parent
                         onClicked: {
-                            if (page_button.modelData === "Quit") {
+                            if (pageButton.modelData === "Quit") {
                                 console.log("User exited app.");
                                 Qt.quit();
                             } else {
-                                page_area.loadPage(page_button.modelData + "Page.qml");
-                                base.currentPage = page_button.modelData;
-                                console.log("User switched to " + page_button.modelData + " page.");
+                                pageArea.loadPage(pageButton.modelData + "Page.qml");
+                                base.currentPage = pageButton.modelData;
+                                console.log("User switched to " + pageButton.modelData + " page.");
                             }
                         }
                     }
                 }
             }
             Rectangle {
-                id: page_area
+                id: pageArea
                 color: Theme.base0A
                 y: base.appHD25 + 10
                 implicitWidth: base.width
@@ -84,19 +84,19 @@ Scope {
                     interval: 0
                     running: true
                     repeat: false
-                    onTriggered: page_area.loadPage("HomePage.qml")
+                    onTriggered: pageArea.loadPage("HomePage.qml")
                 }
                 function loadPage(url) {
-                    if (page_loader.active && page_loader.source === url)
+                    if (pageLoader.active && pageLoader.source === url)
                         return;
 
-                    page_loader.active = false;
-                    page_loader.source = url;
-                    page_loader.active = true;
-                    page_loader.item.parent = page_area;
+                    pageLoader.active = false;
+                    pageLoader.source = url;
+                    pageLoader.active = true;
+                    pageLoader.item.parent = pageArea;
                 }
                 LazyLoader {
-                    id: page_loader
+                    id: pageLoader
                 }
             }
         }
