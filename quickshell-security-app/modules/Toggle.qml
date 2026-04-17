@@ -17,7 +17,7 @@ Item {
         RegularText {
             id: textBox
             text: root.boolValue[0]
-            color: Theme.base07
+            color: Theme.themeData.colors["base07"]
             visible: root.labelText !== "" // Hide completely if no text is set
             anchors.verticalCenter: parent.verticalCenter // Vertically align with the toggle
         }

@@ -1,11 +1,21 @@
 pragma Singleton
 import Quickshell
+import Quickshell.Io
 import QtQuick
 
 // Will later read from json to configure. I tried this and it went very badly I will come back to it later
 
 Singleton {
     id: root
+    property var themeData: JSON.parse(palletReader.text())
+    FileView {
+        id: palletReader
+        path: Qt.resolvedUrl("./theme.json")
+        watchChanges: true
+        onFileChanged: this.reload()
+        blockLoading: true
+    }
+
     // Fonts
     readonly property string fontFamily: "Atkinson Hyperlegible Mono" // To make it look fancy turn on italic
     readonly property int fontSize: parseInt(Quickshell.env("FONT_SIZE")) || 13
@@ -22,7 +32,7 @@ Singleton {
     readonly property color base09: "#df5923"
     readonly property color base0A: "#bb8801"
     readonly property color base0B: "#7f8b00"
-    readonly property color base0C: "#00948b"
+    //readonly property color base0C: "#00948b"
     readonly property color base0D: "#008dd1"
     readonly property color base0E: "#6a7fd2"
     readonly property color base0F: "#e3488e"

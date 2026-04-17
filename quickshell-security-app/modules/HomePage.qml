@@ -20,7 +20,10 @@ Item {
                 RegularText {
                     id: statusTop
                     text: "Status:"
-                    color: Theme.base07
+                    color: Theme.themeData.colors["base07"]
+                    //text: Theme.themeData.colors["base0C"]
+                    //color: Theme.themeData.colors["base07"]
+
                     x: 0
                     height: 50
                 }
@@ -28,14 +31,14 @@ Item {
                 RegularText {
                     id: clamTitle
                     text: "ClamAV: "
-                    color: Theme.base07
+                    color: Theme.themeData.colors["base07"]
                     x: 0
                     height: 50
                 }
                 RegularText {
                     id: sshTitle
                     text: "SShd:   "
-                    color: Theme.base07
+                    color: Theme.themeData.colors["base07"]
                     x: 0
                     height: 50
                 }

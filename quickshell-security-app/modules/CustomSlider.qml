@@ -20,14 +20,14 @@ Item {
         RegularText {
             id: labelText
             text: customSlider.sliderLabelStart + ": "
-            color: Theme.base07
+            color: Theme.themeData.colors["base07"]
             anchors.verticalCenter: parent.verticalCenter
         }
 
         RegularText {
             id: sliderText
             text: customSlider.paddedItemList[sliderControl.value]
-            color: Theme.base07
+            color: Theme.themeData.colors["base07"]
             anchors.verticalCenter: parent.verticalCenter
         }
 

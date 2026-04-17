@@ -74,7 +74,7 @@ Item {
                 spacing: Theme.margins
                 RegularText {
                     text: "Scan at: "
-                    color: Theme.base07
+                    color: Theme.themeData.colors["base07"]
                     anchors.verticalCenter: parent.verticalCenter
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -107,7 +107,7 @@ Item {
                 }
                 RegularText {
                     text: scheduleRow.hour > 12 ? scheduleRow.hour - 12 + " PM" : scheduleRow.hour + " AM"
-                    color: Theme.base07
+                    color: Theme.themeData.colors["base07"]
                     anchors.verticalCenter: parent.verticalCenter
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -122,33 +122,33 @@ Item {
 
             RegularText {
                 text: "Current scan progress: " + clamAVItem.currentScanOutput
-                color: Theme.base07
+                color: Theme.themeData.colors["base07"]
             }
             x: Theme.margins
             RegularText {
                 text: "ClamAV Scan Result"
-                color: Theme.base07
+                color: Theme.themeData.colors["base07"]
             }
             RegularText {
                 text: "Known viruses: " + FileReader.scanData.summary["Known viruses"]
-                color: Theme.base07
+                color: Theme.themeData.colors["base07"]
             }
 
             RegularText {
                 text: "Engine version: " + FileReader.scanData.summary["Engine version"]
-                color: Theme.base07
+                color: Theme.themeData.colors["base07"]
             }
             RegularText {
                 text: "Scanned files: " + FileReader.scanData.summary["Scanned files"]
-                color: Theme.base07
+                color: Theme.themeData.colors["base07"]
             }
             RegularText {
                 text: "Infected files: " + FileReader.scanData.summary["Infected files"]
-                color: Theme.base07
+                color: Theme.themeData.colors["base07"]
             }
             RegularText {
                 text: "Time: " + FileReader.scanData.summary["Time"]
-                color: Theme.base07
+                color: Theme.themeData.colors["base07"]
             }
         }
     }

@@ -18,7 +18,7 @@ Item {
         id: selectorName
         text: multiSelector.text + " "
         x: Theme.margins
-        color: Theme.base07
+        color: Theme.themeData.colors["base07"]
         anchors.verticalCenter: parent.verticalCenter
     }
 
