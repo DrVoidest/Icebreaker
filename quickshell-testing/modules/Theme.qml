@@ -8,7 +8,7 @@ Singleton {
     id: root
     // Fonts
     readonly property string font_family: "Maple Mono NF" // To make it look fancy turn on italic
-    readonly property int font_size: parseInt(Quickshell.env("FONT_SIZE")) || 13
+    readonly property int fontSize: parseInt(Quickshell.env("FONT_SIZE")) || 13
     // Colors
     readonly property color base00: "#0c1118" // Used for base
     readonly property color base01: "#181c22"

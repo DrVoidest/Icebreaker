@@ -2,15 +2,18 @@ import QtQuick
 
 // Basic textbox modules for reuse
 Item {
-    property alias text: regular_text.text
+    property alias text: regularText.text
+    property alias color: regularText.color
+    property alias horizontalAlignment: regularText.horizontalAlignment
+    property alias verticalAlignment: regularText.verticalAlignment
 
-    implicitWidth: regular_text.contentWidth
-    implicitHeight: regular_text.contentHeight
+    implicitWidth: regularText.contentWidth
+    implicitHeight: regularText.contentHeight
 
     Text {
-        id: regular_text
+        id: regularText //test
         font.family: Theme.font_family
-        font.pointSize: Theme.font_size
+        font.pointSize: Theme.fontSize
         color: Theme.base05
 
         width: parent.width

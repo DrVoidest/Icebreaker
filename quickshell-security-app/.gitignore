@@ -3,3 +3,4 @@ fakekey.pub
 sshd_config
 know-good-sshd_config
 .qmls.ini
+clamdscan.log

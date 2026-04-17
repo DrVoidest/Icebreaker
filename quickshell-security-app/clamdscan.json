@@ -10,15 +10,15 @@
     }
   ],
   "summary": {
-    "Known viruses": "3758248",
+    "Known viruses": "3758569",
     "Engine version": "1.4.3",
     "Scanned directories": "1",
     "Scanned files": "40",
     "Infected files": "0",
-    "Data scanned": "368.67 MB",
+    "Data scanned": "367.61 MB",
     "Data read": "29570.08 MB (ratio 0.01:1)",
-    "Time": "176.337 sec (2 m 56 s)",
-    "Start Date": "2026:04:15 08:09:46",
-    "End Date": "2026:04:15 08:12:42"
+    "Time": "169.368 sec (2 m 49 s)",
+    "Start Date": "2026:04:17 14:30:22",
+    "End Date": "2026:04:17 14:33:11"
   }
 }

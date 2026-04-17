@@ -4,7 +4,7 @@ import Quickshell.Services.SystemTray
 
 Item {
     id: root
-    property int iconSize: Theme.font_size + 10 // seems a bit to small if I just do it as it is normaly
+    property int iconSize: Theme.fontSize + 10 // seems a bit to small if I just do it as it is normaly
 
     implicitWidth: row.width
     implicitHeight: iconSize
