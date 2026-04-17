@@ -45,7 +45,7 @@ Scope {
                     anchors.verticalCenter: parent.verticalCenter
 
                     radius: 15
-                    color: modelData === "Quit" ? Theme.base08 : base.currentPage === modelData ? Theme.base0A : Theme.base0B
+                    color: modelData === "Quit" ? Theme.themeData.colors["base08"] : base.currentPage === modelData ? Theme.base0A : Theme.base0B
 
                     RegularText {
                         id: pageText
