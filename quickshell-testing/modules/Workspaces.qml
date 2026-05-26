@@ -126,7 +126,7 @@ ListView {
             id: workspace_mouse_area
             anchors.fill: parent
             onClicked: {
-                workspace_switcher.exec(["sh", "-c", `mmsg -t ${parent.current_workspace_index}`]);
+                workspace_switcher.exec(["sh", "-c", `mmsg dispatch view,${parent.current_workspace_index}`]);
             }
         }
     }
@@ -136,7 +136,8 @@ ListView {
         // Black magic to lessen the amount of processes quickshell needs to run
         Process {
             id: self_triming_process
-            command: ["sh", "-c", "mmsg -g -t | awk '$4 { print $3 }' | head -c 1 && printf '\n' && mmsg -g -t | awk '$5 >= 1 { print $3 }'"]
+            // First gets the current workspace next gets a list of the workspaces (Part 1 and two seperated by the &&)
+            command: ["sh", "-c", "mmsg get all-tags | jq '.all_tags[].tags[] | select(.is_active == true) | .index' && mmsg get all-tags | jq -r '.all_tags[].tags[] | select(.client_count >= 1) | .index'"]
             running: true
 
             stdout: StdioCollector {
